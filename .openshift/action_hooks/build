@@ -5,6 +5,13 @@ OPENERP_TIMESTAMP=20140517-231234
 OPENERP_URL=http://nightly.openerp.com/$OPENERP_VERSION/nightly/src/openerp-${OPENERP_VERSION}-${OPENERP_TIMESTAMP}.tar.gz
 
 cd $OPENSHIFT_DATA_DIR/
+
+if [ -d "openerp-${OPENERP_VERSION}-${OPENERP_TIMESTAMP}" ]; then
+	echo "OpenERP already downloaded."
+	exit 0
+fi
+
+echo "OpenERP will be downloaded now."
 wget $OPENERP_URL
 
 tar xzf openerp-${OPENERP_VERSION}-${OPENERP_TIMESTAMP}.tar.gz
